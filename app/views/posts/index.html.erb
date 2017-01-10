@@ -1,0 +1,27 @@
+<header>
+  <h3>Lilou</h3>
+  <span class="right">
+    <%= link_to 'Nouveau post', new_post_path, class: "waves-effect waves-light btn btn-small" %>
+    <%= link_to image_tag("off2.svg", class: "disconnect"), destroy_user_session_path, method: :delete %>
+  </span>
+</header>
+
+
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
+
+<div class="row">
+  <% @posts.each do |post| %>
+    <div class="col s12 m3">
+      <div class="card grey lighten-5">
+        <div class="card-content">
+          <p><%= post.content %></p>
+        </div>
+        <div class="card-action">
+          <%= link_to 'Modifier', edit_post_path(post) %>
+          <%= link_to 'Supprimer', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
